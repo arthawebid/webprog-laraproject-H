@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\temans;
+use Illuminate\Support\Facades\DB;
 
 class temansController extends Controller
 {
@@ -21,7 +22,7 @@ class temansController extends Controller
      */
     public function create()
     {
-        //
+        return view('teman.create');
     }
 
     /**
@@ -29,8 +30,18 @@ class temansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'wa' => 'required',
+        ]);
+
+        temans::create($request->all());
+
+        return redirect()->route('teman.index')->with('success', 'Data berhasil ditambahkan!');
     }
+
 
     /**
      * Display the specified resource.
@@ -45,7 +56,9 @@ class temansController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $dt = temans::findOrFail($id);
+
+        return view('teman.edit',compact('dt'));
     }
 
     /**
