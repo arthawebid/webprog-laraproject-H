@@ -18,17 +18,17 @@
 
         <div class="mb-3">
             <label for="alamat" class="form-label">Alamat</label>
-            <input type="text" name="alamat" class="form-control" required>
+            <input type="text" value="{{ old('alamat', $dt->alamat ?? '' ) }}" name="alamat" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="kota" class="form-label">Kota</label>
-            <input type="text" name="kota" class="form-control" required>
+            <input type="text" value="{{ old('kota', $dt->kota ?? '' ) }}" name="kota" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="wa" class="form-label">No. WA</label>
-            <input type="text" name="wa" class="form-control" required>
+            <input type="text" value="{{ old('wa', $dt->wa ?? '' ) }}" name="wa" class="form-control" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan</button>
