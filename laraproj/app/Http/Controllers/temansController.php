@@ -64,9 +64,19 @@ class temansController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $r, string $id)
     {
-        //
+        $dta = $r->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'wa' => 'required',
+        ]);
+
+        $dt = temans::findOrFail($id);
+        $dt->update($dta);
+        
+        return redirect()->route('teman.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
