@@ -25,7 +25,11 @@
                     <td>{{ $t->nama }}</td>
                     <td>
                         <a href="{{ route('teman.edit',$t->id) }}" class="btn btn-warning btn-sm">Edit</a> 
-                        Hapus
+                        <form method="POST" action="{{ route('teman.destroy',$t->id) }}" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus Data?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

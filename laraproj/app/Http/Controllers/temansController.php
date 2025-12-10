@@ -84,6 +84,9 @@ class temansController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dt = temans::findOrFail($id);
+        $dt->delete();
+
+        return redirect()->route('teman.index')->with('success', 'Data berhasil dihapus!');
     }
 }
